@@ -61,9 +61,9 @@ extension AppTabExtension on AppCustomTab {
       case AppCustomTab.tab1:
         return AssetConstants.animBottomNavHome;
       case AppCustomTab.tab2:
-        return AssetConstants.animBottomNavHome;
+        return AssetConstants.animBottomNavLearn;
       case AppCustomTab.tab3:
-        return AssetConstants.animBottomNavHome;
+        return AssetConstants.animBottonNavRank;
       case AppCustomTab.profile:
         return AssetConstants.animBottomNavProfile;
     }

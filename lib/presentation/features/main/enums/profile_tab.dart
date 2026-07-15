@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 
 enum ProfileTab {
-  // camp,
   tab1,
   tab2,
   tab3,

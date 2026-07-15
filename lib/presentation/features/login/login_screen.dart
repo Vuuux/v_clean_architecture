@@ -9,7 +9,7 @@ import 'package:v_clean_architecture/app/app_router.dart';
 import 'package:v_clean_architecture/constants/constants.dart';
 import 'package:v_clean_architecture/domain/entities/entities.dart';
 import 'package:v_clean_architecture/presentation/features/login/bloc/login_bloc.dart';
-import 'package:v_clean_architecture/presentation/global_bloc/global_blocs.dart';
+import 'package:v_clean_architecture/presentation/global_blocs/global_blocs.dart';
 import 'package:v_clean_architecture/presentation/utils/utils.dart';
 
 const _kLogoSize = 100.0;
@@ -48,7 +48,7 @@ class _LoginScreenState extends State<LoginScreen> {
     if (state is LoginFailure) {
       if (state.error is ApiException) {
         final apiException = state.error as ApiException;
-        if (apiException.code == 'err_login_locked') {
+        if (apiException.code == AppErrorConstants.errLoginLocked) {
           AppDialog.show(
             context,
             title: 'Account Locked',

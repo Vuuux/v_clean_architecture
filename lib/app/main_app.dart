@@ -13,7 +13,7 @@ import 'package:toastification/toastification.dart';
 import 'package:v_clean_architecture/app/app_environment.dart';
 import 'package:v_clean_architecture/app/app_router.dart';
 import 'package:v_clean_architecture/dependency_injection.dart';
-import 'package:v_clean_architecture/presentation/global_bloc/global_blocs.dart';
+import 'package:v_clean_architecture/presentation/global_blocs/global_blocs.dart';
 import 'package:v_clean_architecture/presentation/utils/utils.dart';
 
 class MainApp extends StatefulWidget {

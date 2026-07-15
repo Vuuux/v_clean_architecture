@@ -12,7 +12,7 @@ import 'package:v_clean_architecture/app/app_router.dart';
 import 'package:v_clean_architecture/constants/assets.dart';
 import 'package:v_clean_architecture/constants/route_names.dart';
 import 'package:v_clean_architecture/presentation/features/splash/bloc/splash_bloc.dart';
-import 'package:v_clean_architecture/presentation/global_bloc/session/session_bloc.dart';
+import 'package:v_clean_architecture/presentation/global_blocs/session/session_bloc.dart';
 
 const _progressBarWidth = 180.0;
 const _progressBarHeight = 3.0;

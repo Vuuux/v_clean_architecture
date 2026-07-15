@@ -1,6 +1,6 @@
 import 'package:app_ui/app_ui.dart';
 import 'package:flutter/material.dart';
-import 'package:v_clean_architecture/presentation/enums/app_tab.dart';
+import 'package:v_clean_architecture/presentation/features/main/enums/app_tab.dart';
 
 class MainBottomNavIcon extends StatelessWidget {
   const MainBottomNavIcon({

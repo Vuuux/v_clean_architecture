@@ -3,7 +3,7 @@ import 'package:app_ui/app_ui.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:gap/gap.dart';
-import 'package:v_clean_architecture/presentation/global_bloc/global_blocs.dart';
+import 'package:v_clean_architecture/presentation/global_blocs/global_blocs.dart';
 
 final class HomeScreen extends StatefulWidget {
   const HomeScreen({super.key});

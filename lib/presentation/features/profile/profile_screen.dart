@@ -6,7 +6,7 @@ import 'package:gap/gap.dart';
 import 'package:go_router/go_router.dart';
 import 'package:v_clean_architecture/constants/route_names.dart';
 import 'package:v_clean_architecture/domain/entities/app_user_entity.dart';
-import 'package:v_clean_architecture/presentation/global_bloc/global_blocs.dart';
+import 'package:v_clean_architecture/presentation/global_blocs/global_blocs.dart';
 
 final class ProfileScreen extends StatefulWidget {
   const ProfileScreen({super.key});

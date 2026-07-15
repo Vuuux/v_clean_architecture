@@ -3,7 +3,7 @@ import 'package:app_ui/app_ui.dart';
 import 'package:collection/collection.dart';
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
-import 'package:v_clean_architecture/presentation/enums/app_tab.dart';
+import 'package:v_clean_architecture/presentation/features/main/enums/app_tab.dart';
 import 'package:v_clean_architecture/presentation/features/main/widgets/main_bottom_nav_icon.dart';
 
 final class MainPage extends StatelessWidget {

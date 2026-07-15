@@ -3,7 +3,9 @@ class AssetConstants {
   // logos
 // Auto-generated below. Do not modify manually.
   static const animBottomNavHome = 'assets/animations/anim_bottom_nav_home.riv';
+  static const animBottomNavLearn = 'assets/animations/anim_bottom_nav_learn.riv';
   static const animBottomNavProfile = 'assets/animations/anim_bottom_nav_profile.riv';
+  static const animBottonNavRank = 'assets/animations/anim_botton_nav_rank.riv';
   static const fzlufgaLight = 'assets/fonts/FzLufga-Light.ttf';
   static const fzlufgaMedium = 'assets/fonts/FzLufga-Medium.ttf';
   static const fzlufgaRegular = 'assets/fonts/FzLufga-Regular.ttf';
@@ -15,4 +17,6 @@ class AssetConstants {
   static const icSocialLine = 'assets/svgs/ic_social_line.svg';
 
 }
+
+
 
