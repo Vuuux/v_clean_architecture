@@ -1,0 +1,19 @@
+{
+  "BUILD_ENV": "prd",
+  "X_APP_ID": "",
+  "CLIENT_ID": "",
+  "VIDEO_COOKIE": "--IGNORE--",
+  "PLAY_STORE_APP_ID": "--IGNORE--",
+  "APP_STORE_APP_ID": "--IGNORE--",
+  "HOST": "http://localhost:8080/",
+  "HOST2": "http://localhost:8080/",
+  "MEDIA_HOST": "http://localhost:8080/",
+  "TRIGGER_DEEPLINK_URL": "http://localhost:8080/",
+  "CERT_PINNING": [],
+  "GOOGLE_IOS_CLIENT_ID": "",
+  "GOOGLE_ANDROID_CLIENT_ID": "",
+  "GOOGLE_SERVER_CLIENT_ID": "",
+  "IGNORE_SSL": true,
+  "DISABLE_VKEY": false,
+  "BLOC_LOG_ENABLED": true
+}
