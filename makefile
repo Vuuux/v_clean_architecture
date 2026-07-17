@@ -13,12 +13,22 @@ pub-get:
 storybook:
 	flutter run -t packages/app_ui/storybook/main_storybook.dart
 
+# Environment-specific run commands
+# Standard development (SIT)
 dev:
 	flutter run ${DEFINE_FLAGS} --flavor sit
+
+# UAT environment
 dev-uat:
 	flutter run ${DEFINE_FLAGS_UAT} --flavor uat
+
+# Production environment
 dev-prd:
 	flutter run ${DEFINE_FLAGS_PRD} --flavor prd
+
+# Manual run with custom config
+run-sit:
+	flutter run --dart-define-from-file=env/sit.json --flavor sit
 
 unit-test:
 ifdef coverage

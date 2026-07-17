@@ -18,8 +18,8 @@ base_path="lib/presentation/features/$snake_case_feature_name"
 bloc_path="$base_path/bloc"
 interactor_path="lib/domain/interactors"
 domain_repository_path="lib/domain/repositories"
-data_reposiotry_path="lib/data/repositories"
-data_remote_path="lib/data/source/remote_source"
+data_repository_path="lib/data/repositories_impl"
+data_remote_path="lib/data/sources/remote"
 
 
 # Create directories
@@ -32,8 +32,7 @@ if [[ "$has_data_flow" == "yes" || "$has_data_flow" == "y" ]]; then
 echo -e "\033[0;36mCreating domain and data...\033[0m"
 # Create and write to {feature_name}_interactor.dart
 cat > "${interactor_path}/${snake_case_feature_name}_interactor.dart" <<EOL
-import 'package:v_clean_architecture/domain/entities/entities.dart';
-import 'package:v_clean_architecture/domain/repositories/repositories.dart';
+import 'package:v_clean_architecture/domain/domain.dart';
 
 abstract class ${feature_name}Interactor {
   Future<void> sample();
@@ -52,11 +51,11 @@ final class ${feature_name}InteractorImpl implements ${feature_name}Interactor {
 }
 EOL
 
-cat >> "${interactor_path}/interactors.dart" <<EOL
-export './${snake_case_feature_name}_interactor.dart';
-EOL
-
-sort "${interactor_path}/interactors.dart" -o "${interactor_path}/interactors.dart"
+# Append to interactors.dart barrel file if it doesn't already export it
+if ! grep -q "./${snake_case_feature_name}_interactor.dart" "${interactor_path}/interactors.dart"; then
+  echo "export './${snake_case_feature_name}_interactor.dart';" >> "${interactor_path}/interactors.dart"
+  sort "${interactor_path}/interactors.dart" -o "${interactor_path}/interactors.dart"
+fi
 
 # Create and write to {feature_name}_repository.dart
 cat > "${domain_repository_path}/${snake_case_feature_name}_repository.dart" <<EOL
@@ -67,15 +66,14 @@ abstract class ${feature_name}Repository {
 }
 EOL
 
-cat >> "${domain_repository_path}/repositories.dart" <<EOL
-export './${snake_case_feature_name}_repository.dart';
-EOL
-
-sort "${domain_repository_path}/repositories.dart" -o "${domain_repository_path}/repositories.dart"
+if ! grep -q "./${snake_case_feature_name}_repository.dart" "${domain_repository_path}/repositories.dart"; then
+  echo "export './${snake_case_feature_name}_repository.dart';" >> "${domain_repository_path}/repositories.dart"
+  sort "${domain_repository_path}/repositories.dart" -o "${domain_repository_path}/repositories.dart"
+fi
 
 # Create and write to {feature_name}_repository_impl.dart
-cat > "${data_reposiotry_path}/${snake_case_feature_name}_repository_impl.dart" <<EOL
-import 'package:v_clean_architecture/data/source/remote_source/remote_source.dart';
+cat > "${data_repository_path}/${snake_case_feature_name}_repository_impl.dart" <<EOL
+import 'package:v_clean_architecture/data/sources/remote/remote.dart';
 import 'package:v_clean_architecture/domain/domain.dart';
 
 final class ${feature_name}RepositoryImpl implements ${feature_name}Repository {
@@ -91,18 +89,18 @@ final class ${feature_name}RepositoryImpl implements ${feature_name}Repository {
 }
 EOL
 
-cat >> "${data_reposiotry_path}/repositories.dart" <<EOL
-export './${snake_case_feature_name}_repository_impl.dart';
-EOL
-
-sort "${data_reposiotry_path}/repositories.dart" -o "${data_reposiotry_path}/repositories.dart"
+if ! grep -q "./${snake_case_feature_name}_repository_impl.dart" "${data_repository_path}/repositories_impl.dart"; then
+  echo "export './${snake_case_feature_name}_repository_impl.dart';" >> "${data_repository_path}/repositories_impl.dart"
+  sort "${data_repository_path}/repositories_impl.dart" -o "${data_repository_path}/repositories_impl.dart"
+fi
 
 # Create and write to {feature_name}_remote_source.dart
+mkdir -p "$data_remote_path"
 cat > "${data_remote_path}/${snake_case_feature_name}_remote_source.dart" <<EOL
-import 'package:clean_arch_core/clean_architecture_core.dart';
+import 'package:app_core/app_core.dart';
 
 class _${feature_name}Api {
-  static const String base${File} = '/v1/${snake_case_feature_name}';
+  static const String path = '/v1/${snake_case_feature_name}';
 }
 
 abstract class ${feature_name}RemoteSource {
@@ -121,11 +119,10 @@ final class ${feature_name}RemoteSourceImpl implements ${feature_name}RemoteSour
 }
 EOL
 
-cat >> "${data_remote_path}/remote_source.dart" <<EOL
-export './${snake_case_feature_name}_remote_source.dart';
-EOL
-
-sort "${data_remote_path}/remote_source.dart" -o "${data_remote_path}/remote_source.dart"
+if ! grep -q "./${snake_case_feature_name}_remote_source.dart" "${data_remote_path}/remote.dart"; then
+  echo "export './${snake_case_feature_name}_remote_source.dart';" >> "${data_remote_path}/remote.dart"
+  sort "${data_remote_path}/remote.dart" -o "${data_remote_path}/remote.dart"
+fi
 
 fi
 
@@ -233,4 +230,4 @@ class ${feature_name}Started extends ${feature_name}Event {
 EOL
 
 echo -e "\033[0;32mFeature '$feature_name' created successfully!\033[0m"
-
+echo -e "\033[0;33mReminder: Don't forget to register your new RemoteSource, Repository, and Interactor in lib/app/app_dependency_injection.dart\033[0m"

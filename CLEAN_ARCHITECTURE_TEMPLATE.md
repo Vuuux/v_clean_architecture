@@ -27,52 +27,23 @@ project-name/
 │   │   ├── app_environment.dart    # Environment handling
 │   │   └── app_router.dart         # Route configuration
 │   ├── constants/                  # App-wide constants
-│   │   ├── assets.dart             # Asset paths
-│   │   ├── bloc_operation_ids.dart # Bloc operation identifiers
-│   │   ├── constants.dart          # General constants
-│   │   ├── http_constants.dart     # HTTP/API constants
-│   │   ├── app_constants.dart      # Business-specific constants
-│   │   ├── route_names.dart        # Route name constants
-│   │   └── app_local_storage_key.dart        # Storage key constants
 │   ├── data/                       # Data Layer (Clean Architecture)
-│   │   ├── datasources/            # Data sources
-│   │   │   ├── datasources.dart    # Barrel export
-│   │   │   ├── local/              # Local data sources
-│   │   │   │   ├── local.dart      # Barrel export
-│   │   │   │   ├── *_local_datasource.dart  # Local datasource implementations
-│   │   │   │   └── impl/           # Concrete implementations
+│   │   ├── sources/                # Data sources
+│   │   │   ├── sources.dart        # Barrel export
+│   │   │   ├── local_storage/      # Local data sources
 │   │   │   └── remote/             # Remote data sources
-│   │   │       ├── remote.dart     # Barrel export
-│   │   │       ├── *_remote_datasource.dart  # Remote datasource interfaces
-│   │   │       └── impl/           # Concrete implementations
-│   │   └── repositories/           # Repository implementations
-│   │       ├── repositories.dart   # Barrel export
-│   │       └── *_repository_impl.dart  # Repository concrete implementations
+│   │   └── repositories_impl/      # Repository implementations
 │   ├── domain/                     # Domain Layer (Clean Architecture)
-│   │   ├── models/                 # Domain entities/models
+│   │   ├── entities/               # Domain entities/models
 │   │   ├── repositories/           # Repository interfaces (abstract)
 │   │   └── interactors/            # Use cases/business logic
-│   │       ├── interactors.dart    # Barrel export
-│   │       ├── *_interactor.dart   # Use case interfaces
-│   │       └── impl/               # Use case implementations
 │   └── presentation/               # Presentation Layer (Clean Architecture)
-│       ├── global_blocs/                  # State management (BLoC pattern)
-│       │   ├── global_blocs.dart          # Barrel export
-│       │   ├── common/             # Shared blocs
-│       │   ├── handle_error/       # Error handling bloc
-│       │   └── feature_name/       # Feature-specific blocs
-│       │       ├── feature_bloc.dart
-│       │       ├── feature_event.dart
-│       │       └── feature_state.dart
+│       ├── global_blocs/           # App-wide BLoCs (Session, Loader, etc.)
 │       └── features/               # UI features/screens
-│           ├── authentication/     # Auth-related screens
-│           ├── onboarding/         # Onboarding screens
-│           ├── home/               # Home screens
-│           ├── profile/            # Profile screens
-│           ├── navigation_scaffold/  # Navigation wrapper
-│           └── feature_name/       # Feature screens
-│               ├── pages/          # Screen widgets
-│               └── widgets/        # Feature-specific widgets
+│           └── feature_name/       # Feature folder
+│               ├── feature_page.dart
+│               ├── feature_screen.dart
+│               └── bloc/           # Feature BLoC
 ├── packages/                       # Local packages
 │   ├── project_core/             # Shared utilities package
 │   │   ├── lib/
@@ -134,6 +105,44 @@ dependencies:
 4. **Modular Packages**: Separate packages for common utilities and UI components
 5. **Feature-based Organization**: Group related functionality together
 6. **Barrel Exports**: Use index files for clean imports
+
+## Development Workflow
+
+### 1. Feature Generation
+Use the provided automation script to maintain architectural consistency:
+```bash
+make gen-feature
+```
+- Creates: `page`, `screen`, `bloc`, `interactor`, `repository`.
+- Handles boilerplate for both state management and data flow.
+
+### 2. Asset Management
+Standardize asset usage via the `AssetConstants` class:
+1. Place assets in `assets/`.
+2. Update `pubspec.yaml`.
+3. Run `make gen-assets` to generate Dart constants.
+4. Use `AssetConstants.yourAssetName` in code.
+
+### 3. Dependency Registration
+Always register new dependencies in `lib/app/app_dependency_injection.dart` following the layers:
+- Remote Data Sources
+- Local Data Sources
+- Repositories
+- Interactors (Use Cases)
+
+## App Flow & Logic
+
+### 1. Overall Application Flow
+<!-- Space for high-level navigation and app flow diagram -->
+![App Flow Diagram](path/to/app_flow.png)
+
+### 2. Data Flow (Clean Architecture)
+<!-- Space for a diagram showing how data flows from DataSource -> Repository -> Interactor -> Bloc -> UI -->
+![Data Flow Diagram](path/to/data_flow.png)
+
+### 3. State Management (BLoC)
+<!-- Space for BLoC state machine or event-state mapping diagram -->
+![State Management Diagram](path/to/state_management.png)
 
 ## Usage
 

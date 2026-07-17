@@ -437,6 +437,23 @@ dependencies:
 // Handle app-level state management
 ```
 
+### 5. Integration with Feature Generation
+
+When you use `make gen-feature` to create a new feature with data flow, the script creates the interfaces and implementations. You MUST manually register these in `DI.initialize()`:
+
+```dart
+// Example: Registering a newly generated feature
+_getIt.registerFactory<NewFeatureRemoteSource>(
+  () => NewFeatureRemoteSourceImpl(client: _getIt<BaseHttpClient>(instanceName: HttpConstants.defaultClient)),
+);
+_getIt.registerFactory<NewFeatureRepository>(
+  () => NewFeatureRepositoryImpl(remoteSource: _getIt<NewFeatureRemoteSource>()),
+);
+_getIt.registerFactory<NewFeatureInteractor>(
+  () => NewFeatureInteractorImpl(repository: _getIt<NewFeatureRepository>()),
+);
+```
+
 ## Common Packages Used
 
 ### Core Dependencies
