@@ -54,7 +54,6 @@ The project includes a script to scaffold a new feature following Clean Architec
 ```bash
 make gen-feature
 ```
-This will prompt for a feature name and create the necessary BLoC, Page, Screen, Interactor, and Repository files.
 
 ### Managing Assets
 We use a custom script to manage and synchronize assets.
@@ -76,23 +75,17 @@ For parts of the app using code generation (like `json_serializable` or `freezed
 make gen
 ```
 
-## App Flow & Architecture Diagrams
+## App Flow & Screenshots
 
-### Application Flow
-![App Flow]
+### Application Screenshots & Demo
+To save space, you can scroll horizontally to view all screens.
 
-<img width="540" height="1200" alt="video (1)" src="https://github.com/user-attachments/assets/55155908-fd23-44b2-8c17-5ee602126143" />
-<img width="540" height="1200" alt="Screenshot_20260718_002922" src="https://github.com/user-attachments/assets/3041783a-7090-48dd-99f1-572148236bb7" />
-<img width="540" height="1200" alt="Screenshot_20260718_002852" src="https://github.com/user-attachments/assets/15369980-1669-46f7-a3bc-2edb85a514de" />
-<img width="540" height="1200" alt="Screenshot_20260718_002902" src="https://github.com/user-attachments/assets/28f2ada9-6a77-467d-b247-e825d85b2b3e" />
-<img width="540" height="1200" alt="Screenshot_20260718_002909" src="https://github.com/user-attachments/assets/2027cfa0-e761-4e33-9d6c-82c963c1ad3e" />
-<img width="540" height="1200" alt="Screenshot_20260718_002914" src="https://github.com/user-attachments/assets/d05d533b-5b4e-4b96-a6f0-f6b56d06ac39" />
+| Demo & Screenshots | | | | | |
+| :---: | :---: | :---: | :---: | :---: | :---: |
+| <img src="https://github.com/user-attachments/assets/55155908-fd23-44b2-8c17-5ee602126143" width="280" /> | <img src="https://github.com/user-attachments/assets/3041783a-7090-48dd-99f1-572148236bb7" width="280" /> | <img src="https://github.com/user-attachments/assets/15369980-1669-46f7-a3bc-2edb85a514de" width="280" /> | <img src="https://github.com/user-attachments/assets/28f2ada9-6a77-467d-b247-e825d85b2b3e" width="280" /> | <img src="https://github.com/user-attachments/assets/2027cfa0-e761-4e33-9d6c-82c963c1ad3e" width="280" /> | <img src="https://github.com/user-attachments/assets/d05d533b-5b4e-4b96-a6f0-f6b56d06ac39" width="280" /> |
+| App Demo | Splash | Home | Explore | Activity | Settings |
 
-
-### Architecture Overview
-<!-- Replace the placeholder below with your architecture diagram -->
-![Architecture Diagram]
-
+### Navigation Flow
 ```mermaid
 graph LR
     Splash[Splash] -->|Auto Login Check| Login[Login]
@@ -109,7 +102,7 @@ graph LR
     Home --> Detail[Feature Details]
 ```
 
-### Architecture Overview
+## Architecture Overview
 
 ```mermaid
 graph TD
