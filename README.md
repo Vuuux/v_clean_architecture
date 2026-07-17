@@ -79,12 +79,65 @@ make gen
 ## App Flow & Architecture Diagrams
 
 ### Application Flow
-<!-- Replace the placeholder below with your app flow diagram -->
-![App Flow](path/to/your/app_flow_diagram.png)
+![App Flow]
+
+<img width="540" height="1200" alt="video (1)" src="https://github.com/user-attachments/assets/55155908-fd23-44b2-8c17-5ee602126143" />
+<img width="540" height="1200" alt="Screenshot_20260718_002922" src="https://github.com/user-attachments/assets/3041783a-7090-48dd-99f1-572148236bb7" />
+<img width="540" height="1200" alt="Screenshot_20260718_002852" src="https://github.com/user-attachments/assets/15369980-1669-46f7-a3bc-2edb85a514de" />
+<img width="540" height="1200" alt="Screenshot_20260718_002902" src="https://github.com/user-attachments/assets/28f2ada9-6a77-467d-b247-e825d85b2b3e" />
+<img width="540" height="1200" alt="Screenshot_20260718_002909" src="https://github.com/user-attachments/assets/2027cfa0-e761-4e33-9d6c-82c963c1ad3e" />
+<img width="540" height="1200" alt="Screenshot_20260718_002914" src="https://github.com/user-attachments/assets/d05d533b-5b4e-4b96-a6f0-f6b56d06ac39" />
+
 
 ### Architecture Overview
 <!-- Replace the placeholder below with your architecture diagram -->
-![Architecture Diagram](path/to/your/architecture_diagram.png)
+![Architecture Diagram]
+
+```mermaid
+graph LR
+    Splash[Splash] -->|Auto Login Check| Login[Login]
+    Login -->|Success| Main[Main Tab Scaffold]
+    
+    subgraph Main_Tabs [Main Navigation]
+        Main --> Home[Home]
+        Main --> Explore[Explore]
+        Main --> Activity[Activity]
+        Main --> Settings[Settings]
+    end
+    
+    Settings --> Profile[Profile Details]
+    Home --> Detail[Feature Details]
+```
+
+### Architecture Overview
+
+```mermaid
+graph TD
+    subgraph Presentation_Layer [Presentation Layer]
+        Page[Feature Page] --> Bloc[BLoC]
+        Bloc --> Screen[Feature Screen]
+    end
+
+    subgraph Domain_Layer [Domain Layer]
+        Bloc --> Interactor[Interactor / Use Case]
+        Interactor --> Entity[Entities]
+        Interactor --> RepoInterface[Repository Interface]
+    end
+
+    subgraph Data_Layer [Data Layer]
+        RepoImpl[Repository Implementation] -- implements --> RepoInterface
+        RepoImpl --> RemoteSource[Remote Data Source]
+        RepoImpl --> LocalSource[Local Data Source]
+    end
+
+    subgraph Core_UI_Packages [Core & UI Packages]
+        AppUI[packages/app_ui] -.-> Presentation_Layer
+        AppCore[packages/app_core] -.-> Data_Layer
+    end
+
+    RemoteSource --> API[External API / Dio]
+    LocalSource --> Storage[Secure Storage / DB]
+```
 
 ---
 
