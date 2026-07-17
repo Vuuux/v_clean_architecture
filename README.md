@@ -11,10 +11,14 @@ This project follows Clean Architecture principles, separating the application i
 
 For a detailed breakdown of the structure, see [CLEAN_ARCHITECTURE_TEMPLATE.md](./CLEAN_ARCHITECTURE_TEMPLATE.md).
 
+## Dependency Injection
+We use `get_it` for Dependency Injection. For more details on how to register and use dependencies, refer to the [DEPENDENCY_INJECTION_GUIDE.md](./DEPENDENCY_INJECTION_GUIDE.md).
+
 ## Getting Started
 
 ### Prerequisites
-- Flutter SDK (latest stable version)
+- Flutter SDK: v3.44.4 or above
+- Dart SDK: v3.12.2 or above
 - Ruby (for fastlane if applicable)
 - Make (optional, but recommended for using shortcuts)
 
@@ -133,6 +137,3 @@ graph TD
 ```
 
 ---
-
-## Dependency Injection
-We use `get_it` for Dependency Injection. For more details on how to register and use dependencies, refer to the [DEPENDENCY_INJECTION_GUIDE.md](./DEPENDENCY_INJECTION_GUIDE.md).
